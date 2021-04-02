@@ -22,10 +22,6 @@ router.post('/', async(req, res) => {
     res.status(201).send();
 });
 
-
-// Update Posts 
-
-
 //Delete Posts 
 router.delete('/:id', async (req, res) =>{
     const posts = await loadPostsCollection();
@@ -42,8 +38,5 @@ async function loadPostsCollection(){
 
     return client.db('projectNotes').collection('posts');
 }
-
-
-
 
 module.exports = router;
