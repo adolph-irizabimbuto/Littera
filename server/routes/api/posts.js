@@ -1,6 +1,5 @@
 const express = require('express');
 const mongdb = require('mongodb');
-
 const router = express.Router();
 
 // Get Posts 
