@@ -1,5 +1,6 @@
 const express = require('express');
 const mongdb = require('mongodb');
+
 const router = express.Router();
 
 // Get Posts 
@@ -18,14 +19,13 @@ router.post('/', async(req, res) => {
         createdAt: new Date(),
         priority: req.body.priority
     });
-
     res.status(201).send();
 });
 
 //Delete Posts 
 router.delete('/:id', async (req, res) =>{
     const posts = await loadPostsCollection();
-    await posts.deleteOne({_id: new mongdb.ObjectID(req.params.id)});
+    await posts.deleteOne({_id: new mongdb.ObjectID(req.params.id) });
     res.status(200).send();
 });
 
@@ -34,7 +34,7 @@ async function loadPostsCollection(){
     ("mongodb+srv://abc123:asher@journal.9uxae.mongodb.net/projectNotes?retryWrites=true&w=majority",
     {
         useNewUrlParser: true
-    })
+    });
 
     return client.db('projectNotes').collection('posts');
 }
